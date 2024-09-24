@@ -5,7 +5,7 @@ import { userAuthKey } from "./auth/authKeys";
 
 function ProtectedRoutes() {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { loginSusses } = userAuthKey;
   const { userLoginStatus } = useSelector((state) => state.userInfo);
 

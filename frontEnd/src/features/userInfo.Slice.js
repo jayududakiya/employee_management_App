@@ -45,14 +45,14 @@ const userInfoSlice = createSlice({
         state.loading = true
         state.error = null;
       })
+      .addCase(signupUserThunk.rejected, (state,action) => {
+        state.loading = false
+        state.error = action.error
+      })
       .addCase(signupUserThunk.fulfilled, (state, action) => {
         console.log("🚀 ~ .addCase ~ action payload:", action.payload)
         state.loading = false        
         state.userRegisterStatus = action.payload.userStatus 
-      })
-      .addCase(signupUserThunk.rejected, (state,action) => {
-        state.loading = false
-        state.error = action.error
       })
   }
 });

@@ -2,8 +2,12 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const server = express();
+require('dotenv').config();
+const mongoose = require("mongoose");
 
-const { upload } = require('./helpers/imageUpload')
+const { upload } = require('./helpers/imageUpload');
+
+const User = require('./model/user.model');
 
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
@@ -31,15 +35,24 @@ server.post("/api/user",upload.single('profilePicture') ,async (req, res) => {
       uploadedFilePath = req.file.path.replace(/\\/g, "/");
     }
     if (body) {
+      const user = await User.create({...body , profilePicture : uploadedFilePath});
+      if(!user) return res.status(400).json({message : 'REGISTER_POROSE_FAIL'})
       return res
         .status(200)
-        .json({ userStatus: 'REGISTER_SUSSES_FULL', user:{...body , profilePicture : uploadedFilePath}});
+        .json({ userStatus: 'REGISTER_SUSSES_FULL', user});
     }
   } catch (error) {
     console.log("error", error);
   }
 });
 
-server.listen(8000, () => {
-  console.log("server is running at http://localhost:8000");
+const port = process.env.PORT || 8080
+
+server.listen(port , async () => {
+  console.log(`server is running at http://localhost:${port}`);
+  mongoose.connect(process.env.BASE_LOCAL_API_URL).then(()=>{
+    console.log('mongoDB data base is Connect...');
+  }).catch((error)=>{
+    console.log('Error',error);
+  })
 });
