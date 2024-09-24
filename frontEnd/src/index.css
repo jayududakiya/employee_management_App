@@ -1,0 +1,11 @@
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+.container{
+  width: calc(100% - 10%);
+  margin: auto;
+  padding: 100px 0px 40px 0px;
+}
