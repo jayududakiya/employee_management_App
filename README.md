@@ -22,6 +22,8 @@ This guide provides a quick reference to commonly used Git commands for pulling,
 - [Create or Switch Branch](#create-or-switch-branch)
 - [Fetch All Branches](#fetch-all-branches)
 - [Add Changes](#add-changes)
+- [Commit Changes](#commit-changes)
+- [Common Workflows](#common-workflows)
 
 ---
 
@@ -37,7 +39,7 @@ git pull
 ```bash
 git pull origin <branch-name>
 ``` 
-#### Push Changes
+### Push Changes
 After committing your changes, push them to the remote repository:
 
 ```bash
@@ -47,7 +49,7 @@ git push
 ```bash
 git push origin <branch-name>
 ``` 
-##### Create or Switch Branch
+### Create or Switch Branch
 - Create a new branch:
 ```bash
 git checkout -b <new-branch-name>
@@ -59,27 +61,27 @@ This command creates and switches to the new branch.
 ```bash
 git checkout <branch-name>
 ```
-###### Fetch All Branches
+### Fetch All Branches
 
 - To fetch all branches from the remote without merging them:
 ```bash
 git fetch --all
 ```
 
-###### Add Changes
+### Add Changes
 
 - To stage all changed files at once:
 ```bash
 git add .
 ```
-###### Commit Changes
+### Commit Changes
 
 - After staging files, commit them with a message:
 ```bash
 git commit -m "your commit message"
 ```
 
-###### Common Workflows
+### Common Workflows
 
 1. Pull before you work:
 ```bash
